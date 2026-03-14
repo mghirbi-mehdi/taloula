@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogue Restos Tunisie - Commande WhatsApp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-color: #ff4757;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .whatsapp-banner {
+            background-color: #25D366;
+            color: white;
+            padding: 0.8rem;
+            text-align: center;
+            font-size: 1.1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .whatsapp-banner a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            background-color: rgba(255,255,255,0.2);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            margin-left: 1rem;
+        }
+
+        .whatsapp-banner a:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .restaurant-section {
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .restaurant-header {
+            background: linear-gradient(135deg, #ff6b6b, #ff4757);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .restaurant-logo {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #ff4757;
+        }
+
+        .restaurant-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .restaurant-header p {
+            opacity: 0.9;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        .plat-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            border: 1px solid #eee;
+        }
+
+        .plat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .plat-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .plat-info {
+            padding: 1.2rem;
+        }
+
+        .plat-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #2d3436;
+        }
+
+        .plat-description {
+            color: #636e72;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .plat-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .prix {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff4757;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: background-color 0.2s;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+
+        .btn-whatsapp i {
+            font-size: 1.1rem;
+        }
+
+        .contact-direct {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 15px;
+            color: white;
+        }
+
+        .contact-direct h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-direct p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-whatsapp-large {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-whatsapp-large:hover {
+            transform: scale(1.05);
+            background-color: #128C7E;
+        }
+
+        footer {
+            background-color: #2d3436;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🍽️ Catalogue des Restos Tunisie</h1>
+        <p>Commandez vos plats préférés en un clic sur WhatsApp</p>
+    </header>
+
+    <div class="whatsapp-banner">
+        📱 Livraison rapide partout en Tunisie 
+        <a href="https://wa.me/21651924385?text=Bonjour%20je%20souhaite%20avoir%20des%20informations%20sur%20la%20livraison" target="_blank">
+            Contacter livraison ⚡
+        </a>
+    </div>
+
+    <div class="container">
+        <!-- Restaurant 1: La Belle Table -->
+        <section class="restaurant-section">
+            <div class="restaurant-header">
+                <div class="restaurant-logo">🍕</div>
+                <div>
+                    <h2>AL OSTEDH</h2>
+                    <p>📍 Tunis • LAFAYETTE • Ouvert 10h-22h</p>
+                </div>
+            </div>
+            
+            <div class="menu-grid">
+                <!-- Plat 1 -->
+                <div class="plat-card">
+                    <div class="plat-image" style="background-image: url('file:///C:/Users/HP/Desktop/talel_catalogue/burger_bnin.PNG')"></div>
+                    <div class="plat-info">
+                        <h3>Burger Crispy</h3>
+                        <p class="plat-description">Tomates, Laitue, Oignon caramélisé, Sauce fromagère, Sauce burger, Crispy</p>
+                        <div class="plat-footer">
+                            <span class="prix">14,9 DT</span>
+                            <a href="https://wa.me/21651924385?text=Bonjour%20je%20souhaite%20commander%20la%20Pizza%20Margherita%20(18%20DT)%20de%20La%20Belle%20Table.%20Merci%20de%20me%20confirmer%20la%20disponibilité%20et%20les%20frais%20de%20livraison." 
+                               class="btn-whatsapp" target="_blank">
+                                <span>📱</span> Commander
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <!-- Plat 2 -->
+                <div class="plat-card">
+                    <div class="plat-image" style="background-image: url('file:///C:/Users/HP/Desktop/projet_ult_loul/les%20captures/burger_classique.PNG')"></div>
+                    <div class="plat-info">
+                        <h3>Burger Classique</h3>
+                        <p class="plat-description">Tomates, Laitue, Oignon caramélisé, Sauce fromagère, Boeuf</p>
+                        <div class="plat-footer">
+                            <span class="prix">16,9 DT</span>
+                            <a href="https://wa.me/21651924385?text=Bonjour%20je%20souhaite%20commander%20le%20Couscous%20Royal%20(25%20DT)%20de%20La%20Belle%20Table.%20Merci%20de%20me%20confirmer%20la%20disponibilité%20et%20les%20frais%20de%20livraison." 
+                               class="btn-whatsapp" target="_blank">
+                                <span>📱</span> Commander
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plat 3 -->
+                <div class="plat-card">
+                    <div class="plat-image" style="background-image: url('https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400&auto=format&fit=crop')"></div>
+                    <div class="plat-info">
+                        <h3>CRISPY CHEESE</h3>
+                        <p class="plat-description">Tomates, Laitue, Oignon caramélisé, Sauce fromagère, Sauce burger, Crispy, Cheese</p>
+                        <div class="plat-footer">
+                            <span class="prix">21,9 DT</span>
+                            <a href="https://wa.me/21651924385?text=Bonjour%20je%20souhaite%20commander%20les%20Pâtes%20Carbonara%20(22%20DT)%20de%20La%20Belle%20Table.%20Merci%20de%20me%20confirmer%20la%20disponibilité%20et%20les%20frais%20de%20livraison." 
+                               class="btn-whatsapp" target="_blank">
+                                <span>📱</span> Commander
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="plat-card">
+                    <div class="plat-image" style="background-image: url('file:///C:/Users/HP/Desktop/projet_ult_loul/les%20captures/burger_classique.PNG')"></div>
+                    <div class="plat-info">
+                        <h3>BOEUF CHEESE</h3>
+                        <p class="plat-description">Tomates, Laitue, Oignon caramélisé, Sauce fromagère, Sauce burger, Boeuf, Cheese</p>
+                        <div class="plat-footer">
+                            <span class="prix">22,9 DT</span>
+                            <a href="https://wa.me/21651924385?text=Bonjour%20je%20souhaite%20commander%20le%20Couscous%20Royal%20(25%20DT)%20de%20La%20Belle%20Table.%20Merci%20de%20me%20confirmer%20la%20disponibilité%20et%20les%20frais%20de%20livraison." 
+                               class="btn-whatsapp" target="_blank">
+                                <span>📱</span> Commander
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="plat-card">
+                    <div class="plat-image" style="background-image: url('file:///C:/Users/HP/Desktop/projet_ult_loul/les%20captures/burger_classique.PNG')"></div>
+                    <div class="plat-info">
+                        <h3>2 BOEUF </h3>
+                        <p class="plat-description">Tomates, Laitue, Oignon caramélisé, Sauce fromagère, Sauce burger, 2 steaks de boeuf</p>
+                        <div class="plat-footer">
+                            <span class="prix">24,9 DT</span>
+                            <a href="https://wa.me/21651924385?text=Bonjour%20je%20souhaite%20commander%20le%20Couscous%20Royal%20(25%20DT)%20de%20La%20Belle%20Table.%20Merci%20de%20me%20confirmer%20la%20disponibilité%20et%20les%20frais%20de%20livraison." 
+                               class="btn-whatsapp" target="_blank">
+                                <span>📱</span> Commander
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="plat-card">
+                    <div class="plat-image" style="background-image: url('file:///C:/Users/HP/Desktop/projet_ult_loul/les%20captures/burger_classique.PNG')"></div>
+                    <div class="plat-info">
+                        <h3>DOUBLE BOEUF CHEESE  </h3>
+                        <p class="plat-description">Tomates, Laitue, Oignon caramélisé, Sauce fromagère, Sauce burger, Double boeuf, Cheese</p>
+                        <div class="plat-footer">
+                            <span class="prix">30,9 DT</span>
+                            <a href="https://wa.me/21651924385?text=Bonjour%20je%20souhaite%20commander%20le%20Couscous%20Royal%20(25%20DT)%20de%20La%20Belle%20Table.%20Merci%20de%20me%20confirmer%20la%20disponibilité%20et%20les%20frais%20de%20livraison." 
+                               class="btn-whatsapp" target="_blank">
+                                <span>📱</span> Commander
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            
+        </section>
+
+        <!-- Restaurant 2: Saveurs d'Orient -->
+        <section class="restaurant-section">
+            <div class="restaurant-header">
+                <div class="restaurant-logo">🥙</div>
+                <div>
+                    <h2>Saveurs d'Orient</h2>
+                    <p>📍 Ariana • Cuisine orientale & libanaise • Ouvert 11h-23h</p>
+                </div>
+            </div>
+            
+            <div class="menu-grid">
+                <!-- Plat 1 -->
+                <div class="plat-card">
+                    <div class="plat-image" style="background-image: url('https://images.unsplash.com/photo-1606755456206-b25206cde27e?w=400&auto=format&fit=crop')"></div>
+                    <div class="plat-info">
+                        <h3>Chawarma Poulet</h3>
+                        <p class="plat-description">Pain libanais, poulet mariné, pickles, ail, frites</p>
+                        <div class="plat-footer">
+                            <span class="prix">12 DT</span>
+                            <a href="https://wa.me/21651924385?text=Bonjour%20je%20souhaite%20commander%20le%20Chawarma%20Poulet%20(12%20DT)%20de%20Saveurs%20d'Orient.%20Merci%20de%20me%20confirmer%20la%20disponibilité%20et%20les%20frais%20de%20livraison." 
+                               class="btn-whatsapp" target="_blank">
+                                <span>📱</span> Commander
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plat 2 -->
+                <div class="plat-card">
+                    <div class="plat-image" style="background-image: url('https://images.unsplash.com/photo-1576363343742-1b2f9b55f5b3?w=400&auto=format&fit=crop')"></div>
+                    <div class="plat-info">
+                        <h3>Assiette Mezzé</h3>
+                        <p class="plat-description">Hoummous, mutabbal, taboulé, falafels, fromage halloumi</p>
+                        <div class="plat-footer">
+                            <span class="prix">28 DT</span>
+                            <a href="https://wa.me/21651924385?text=Bonjour%20je%20souhaite%20commander%20l'Assiette%20Mezzé%20(28%20DT)%20de%20Saveurs%20d'Orient.%20Merci%20de%20me%20confirmer%20la%20disponibilité%20et%20les%20frais%20de%20livraison." 
+                               class="btn-whatsapp" target="_blank">
+                                <span>📱</span> Commander
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plat 3 -->
+                <div class="plat-card">
+                    <div class="plat-image" style="background-image: url('https://images.unsplash.com/photo-1631452180519-0140c5983fc6?w=400&auto=format&fit=crop')"></div>
+                    <div class="plat-info">
+                        <h3>Mix Grill</h3>
+                        <p class="plat-description">Brochettes poulet et agneau, kefta, riz épicé, grillades</p>
+                        <div class="plat-footer">
+                            <span class="prix">32 DT</span>
+                            <a href="https://wa.me/21651924385?text=Bonjour%20je%20souhaite%20commander%20le%20Mix%20Grill%20(32%20DT)%20de%20Saveurs%20d'Orient.%20Merci%20de%20me%20confirmer%20la%20disponibilité%20et%20les%20frais%20de%20livraison." 
+                               class="btn-whatsapp" target="_blank">
+                                <span>📱</span> Commander
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+            
+        </section>
+
+        <!-- Restaurant 3: Poisson & Cie -->
+        <section class="restaurant-section">
+            <div class="restaurant-header">
+                <div class="restaurant-logo">🐟</div>
+                <div>
+                    <h2>Poisson & Cie</h2>
+                    <p>📍 La Marsa • Fruits de mer • Ouvert 12h-22h</p>
+                </div>
+            </div>
+            
+            <div class="menu-grid">
+                <!-- Plat 1 -->
+                <div class="plat-card">
+                    <div class="plat-image" style="background-image: url('https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=400&auto=format&fit=crop')"></div>
+                    <div class="plat-info">
+                        <h3>Poisson Grillé</h3>
+                        <p class="plat-description">Daurade royale grillée, légumes vapeur, sauce citron</p>
+                        <div class="plat-footer">
+                            <span class="prix">35 DT</span>
+                            <a href="https://wa.me/21651924385?text=Bonjour%20je%20souhaite%20commander%20le%20Poisson%20Grillé%20(35%20DT)%20de%20Poisson%20%26%20Cie.%20Merci%20de%20me%20confirmer%20la%20disponibilité%20et%20les%20frais%20de%20livraison." 
+                               class="btn-whatsapp" target="_blank">
+                                <span>📱</span> Commander
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plat 2 -->
+                <div class="plat-card">
+                    <div class="plat-image" style="background-image: url('https://images.unsplash.com/photo-1551248429-40975aa4de74?w=400&auto=format&fit=crop')"></div>
+                    <div class="plat-info">
+                        <h3>Couscous Poisson</h3>
+                        <p class="plat-description">Couscous aux poissons frais, légumes, sauce épicée</p>
+                        <div class="plat-footer">
+                            <span class="prix">38 DT</span>
+                            <a href="https://wa.me/21651924385?text=Bonjour%20je%20souhaite%20commander%20le%20Couscous%20Poisson%20(38%20DT)%20de%20Poisson%20%26%20Cie.%20Merci%20de%20me%20confirmer%20la%20disponibilité%20et%20les%20frais%20de%20livraison." 
+                               class="btn-whatsapp" target="_blank">
+                                <span>📱</span> Commander
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plat 3 -->
+                <div class="plat-card">
+                    <div class="plat-image" style="background-image: url('https://images.unsplash.com/photo-1627308595171-d1b5d6712b3d?w=400&auto=format&fit=crop')"></div>
+                    <div class="plat-info">
+                        <h3>Paella Fruits de Mer</h3>
+                        <p class="plat-description">Riz safrané, calamars, crevettes, moules, poisson</p>
+                        <div class="plat-footer">
+                            <span class="prix">42 DT</span>
+                            <a href="https://wa.me/21651924385?text=Bonjour%20je%20souhaite%20commander%20la%20Paella%20Fruits%20de%20Mer%20(42%20DT)%20de%20Poisson%20%26%20Cie.%20Merci%20de%20me%20confirmer%20la%20disponibilité%20et%20les%20frais%20de%20livraison." 
+                               class="btn-whatsapp" target="_blank">
+                                <span>📱</span> Commander
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section contact direct livraison -->
+        <div class="contact-direct">
+            <h3>🚚 Service Livraison Rapide</h3>
+            <p>Contactez directement le responsable livraison pour toute information sur :</p>
+            <p>✓ Frais de livraison ✓ Délais ✓ Disponibilité ✓ Commandes spéciales</p>
+            <a href="https://wa.me/21651924385?text=Bonjour%20responsable%20livraison,%20je%20souhaite%20avoir%20des%20informations%20sur%20les%20frais%20de%20livraison%20et%20la%20disponibilité%20des%20plats" 
+               class="btn-whatsapp-large" target="_blank">
+                📱 Contacter Livraison (Directeur)
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Catalogue Restos Tunisie - Commandez facilement sur WhatsApp</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Livraison dans toute la Tunisie • Paiement à la livraison</p>
+    </footer>
+
+    <script>
+        // Optionnel: Ajouter un petit script pour tracker les clics ou personnaliser
+        console.log('Catalogue Restos chargé avec succès!');
+    </script>
+</body>
+</html>
